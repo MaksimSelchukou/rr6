@@ -23,6 +23,7 @@ const BlogPage = () => {
     return (
         <div>
             <h1>BlogPage</h1>
+            <Link to='/posts/new'>Create post</Link>
             <ul>
             {posts.map(post => {
                 return <Link key={post.id} to={`/posts/${post.id}`}>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {CustomLink} from "../components/CustomLink";
 
 type PostType = {
     userId: number
@@ -12,7 +13,16 @@ type InitType = PostType | null
 
 export const SinglePage = () => {
     const {id} = useParams()
+    const navigate = useNavigate()
     const [post, setPost] = useState<InitType>(null)
+
+    const goBack = () => {
+        navigate(-1)
+    }
+
+    const goHome = () => {
+        navigate('/', {replace: true})
+    }
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
@@ -26,6 +36,9 @@ export const SinglePage = () => {
 
     return (
         <div>
+            <button><Link to={'/'}>Home</Link></button>
+
+            <button onClick={goBack}>Back</button>
             {post && (
                 <>
                     <h1>{post.title}</h1>
