@@ -10,7 +10,7 @@ type CustomLinkPropsType = {
 export const CustomLink = ({children, to, ...props}: CustomLinkPropsType) => {
     const match = useMatch(to)
     // console.log(match)
-    console.log({...props},'props')
+    //console.log({...props},'props')
     return (
         <>
             <Link
